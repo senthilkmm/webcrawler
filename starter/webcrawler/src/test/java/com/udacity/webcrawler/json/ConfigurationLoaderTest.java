@@ -28,7 +28,12 @@ public final class ConfigurationLoaderTest {
         " }";
 
     Reader reader = new StringReader(json);
-    CrawlerConfiguration config = ConfigurationLoader.read(reader);
+    CrawlerConfiguration config = null;
+    try {
+      config = ConfigurationLoader.read(reader);
+    } catch (IOException e) {
+      fail("Failed to read the json string", e);
+    }
     try {
       assertThat(reader.ready()).isTrue();
     } catch (IOException e) {
@@ -60,7 +65,12 @@ public final class ConfigurationLoaderTest {
         " }";
 
     Reader reader = new StringReader(json);
-    CrawlerConfiguration config = ConfigurationLoader.read(reader);
+    CrawlerConfiguration config = null;
+    try {
+      config = ConfigurationLoader.read(reader);
+    } catch (IOException e) {
+      fail("Failed to read the json string", e);
+    }
     try {
       assertThat(reader.ready()).isTrue();
     } catch (IOException e) {
