@@ -2,10 +2,11 @@ package com.udacity.webcrawler.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.Objects;
 
 /**
@@ -31,7 +32,7 @@ public final class CrawlResultWriter {
    */
   public void write(Path path) throws IOException {
     // TODO: Fill in this method.
-    try (Writer writer = new FileWriter(String.valueOf(path))) {
+    try (Writer writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
       write(writer);
     }
   }

@@ -49,10 +49,9 @@ public class CrawlAction extends RecursiveAction {
                 return;
             }
         }
-        if (visitedUrls.contains(url)) {
+
+        if (!visitedUrls.add(url))
             return;
-        }
-        visitedUrls.add(url);
 
         PageParser.Result result = parserFactory.get(url).parse();
 
